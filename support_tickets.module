@@ -1,0 +1,10 @@
+<?php
+
+include_once('support_tickets.features.inc');
+
+/**
+* Implementation of hook_init().
+*/
+function support_tickets_init() {
+  drupal_add_css(drupal_get_path('module', 'support_tickets') .'/support_tickets.css');
+}

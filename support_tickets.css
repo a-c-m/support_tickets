@@ -1,0 +1,7 @@
+#features-menu li a.icon-support-tickets span.icon {
+  background:url(icon.png) no-repeat;
+}
+
+span.spaces-feature.feature-support_tickets {
+  background:url(icon_small.png) no-repeat;
+}
