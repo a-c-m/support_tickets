@@ -371,6 +371,47 @@ Request',
   return $fields;
 }
 
+
+/**
+ * Helper to implementation of hook_context_default_contexts().
+ */
+function _support_tickets_context_default_contexts() {
+  $export = array();
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'support_ticket';
+  $context->description = 'A simple CCK driven ticketing system';
+  $context->tag = 'Support ticket';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'support_ticket' => 'support_ticket',
+      ),
+      'options' => array(
+        'node_form' => 1,
+      ),
+    ),
+    'views' => array(
+      'values' => array(
+        'support_ticket_list' => 'support_ticket_list',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'menu' => 'support-tickets',
+  );
+  $context->condition_mode = 0;
+
+  $translatables['support_ticket'] = array(
+    t('A simple CCK driven ticketing system'),
+    t('Support ticket'),
+  );
+
+  $export['support_ticket'] = $context;
+  return $export;
+}
+
 /**
  * Helper to implementation of hook_ctools_plugin_api().
  */
@@ -404,5 +445,8 @@ function _support_tickets_strongarm() {
   );
 
   $export['content_extra_weights_support_ticket'] = $strongarm;
+  
+  $export['og_content_type_usage_support_ticket'] = 'group_post_wiki';
+  
   return $export;
 }

@@ -10,6 +10,15 @@ function support_tickets_content_default_fields() {
 }
 
 /**
+ * Implementation of hook_context_default_contexts().
+ */
+function support_tickets_context_default_contexts() {
+  module_load_include('inc', 'support_tickets', 'support_tickets.defaults');
+  $args = func_get_args();
+  return call_user_func_array('_support_tickets_context_default_contexts', $args);
+}
+
+/**
  * Implementation of hook_ctools_plugin_api().
  */
 function support_tickets_ctools_plugin_api() {
