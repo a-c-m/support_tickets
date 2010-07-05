@@ -78,83 +78,6 @@ function _support_tickets_content_default_fields() {
     ),
   );
 
-  // Exported field: field_site
-  $fields[] = array(
-    'field_name' => 'field_site',
-    'type_name' => 'support_ticket',
-    'display_settings' => array(
-      'weight' => '-4',
-      'parent' => '',
-      'label' => array(
-        'format' => 'inline',
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'nodereference',
-    'required' => '1',
-    'multiple' => '0',
-    'module' => 'nodereference',
-    'active' => '1',
-    'referenceable_types' => array(
-      'book' => 'book',
-      'blog' => 0,
-      'casetracker_basic_case' => 0,
-      'event' => 0,
-      'group' => 0,
-      'profile' => 0,
-      'casetracker_basic_project' => 0,
-      'shoutbox' => 0,
-      'support_ticket' => 0,
-      'feed_ical_item' => 0,
-      'feed_ical' => 0,
-    ),
-    'advanced_view' => 'site_details',
-    'advanced_view_args' => '',
-    'widget' => array(
-      'autocomplete_match' => 'contains',
-      'size' => 60,
-      'default_value' => array(
-        '0' => array(
-          'nid' => '',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Site',
-      'weight' => '-4',
-      'description' => '',
-      'type' => 'nodereference_buttons',
-      'module' => 'nodereference',
-    ),
-  );
-
   // Exported field: field_ticket_priority
   $fields[] = array(
     'field_name' => 'field_ticket_priority',
@@ -363,14 +286,12 @@ Request',
   array(
     t('Assigned to'),
     t('Priority'),
-    t('Site'),
     t('Status'),
     t('Type'),
   );
 
   return $fields;
 }
-
 
 /**
  * Helper to implementation of hook_context_default_contexts().
@@ -399,6 +320,10 @@ function _support_tickets_context_default_contexts() {
     ),
   );
   $context->reactions = array(
+    'block' => array(
+      'blocks' => array(),
+      'layout' => 'default',
+    ),
     'menu' => 'support-tickets',
   );
   $context->condition_mode = 0;
@@ -419,7 +344,10 @@ function _support_tickets_ctools_plugin_api() {
   $args = func_get_args();
   $module = array_shift($args);
   $api = array_shift($args);
-  if ($module == "strongarm" && $api == "strongarm") {
+  if ($module == "context" && $api == "context") {
+    return array("version" => 3);
+  }
+  else if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
 }
@@ -429,6 +357,13 @@ function _support_tickets_ctools_plugin_api() {
  */
 function _support_tickets_strongarm() {
   $export = array();
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_support_ticket';
+  $strongarm->value = '2';
+
+  $export['comment_support_ticket'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -445,8 +380,12 @@ function _support_tickets_strongarm() {
   );
 
   $export['content_extra_weights_support_ticket'] = $strongarm;
-  
-  $export['og_content_type_usage_support_ticket'] = 'group_post_wiki';
-  
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'og_content_type_usage_support_ticket';
+  $strongarm->value = 'group_post_wiki';
+
+  $export['og_content_type_usage_support_ticket'] = $strongarm;
   return $export;
 }
