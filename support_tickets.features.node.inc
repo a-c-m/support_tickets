@@ -13,7 +13,7 @@ function _support_tickets_node_info() {
       'title_label' => t('Title'),
       'has_body' => '1',
       'body_label' => t('Description'),
-      'min_word_count' => '25',
+      'min_word_count' => '10',
       'help' => t('NEEDS COPY'),
     ),
   );
