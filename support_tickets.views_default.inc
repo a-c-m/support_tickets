@@ -439,20 +439,20 @@ function support_tickets_views_default_views() {
     'default' => 'field_ticket_priority_value',
   ));
   $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->override_option('path', 'support-tickets');
+  $handler->override_option('path', 'support/tickets');
   $handler->override_option('menu', array(
-    'type' => 'normal',
-    'title' => 'Support Tickets',
+    'type' => 'default tab',
+    'title' => 'Tickets',
     'description' => 'Help getting things to work or fix bugs',
     'weight' => '10',
     'name' => 'features',
   ));
   $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
+    'type' => 'normal',
+    'title' => 'Support',
     'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
+    'weight' => '0',
+    'name' => 'features',
   ));
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->override_option('fields', array(
