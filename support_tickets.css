@@ -5,3 +5,9 @@
 span.spaces-feature.feature-support_tickets {
   background:url(icon_small.png) no-repeat;
 }
+
+#edit-field-ticket-type-value-wrapper,
+#edit-field-ticket-priority-value-wrapper,
+#edit-field-ticket-state-value-wrapper {
+  width: 45%;
+}
