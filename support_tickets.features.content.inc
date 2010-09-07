@@ -142,7 +142,7 @@ Low',
       'label' => 'Priority',
       'weight' => '-2',
       'description' => 'How important this ticket is. Tickets marked as EMERGENCY or High may be completed done out of hours and may cost extra.',
-      'type' => 'optionwidgets_buttons',
+      'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
     ),
   );
@@ -198,6 +198,7 @@ Low',
 Open
 Needs feedback
 Complete
+On-hold
 Rejected',
     'allowed_values_php' => '',
     'widget' => array(
@@ -210,7 +211,7 @@ Rejected',
       'label' => 'Status',
       'weight' => '-1',
       'description' => 'The current state of the ticket',
-      'type' => 'optionwidgets_buttons',
+      'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
     ),
   );
@@ -263,7 +264,7 @@ Rejected',
     'text_processing' => '0',
     'max_length' => '',
     'allowed_values' => 'Bug
-Edit/Add content
+Modification
 Help/Question
 Request',
     'allowed_values_php' => '',
@@ -277,7 +278,7 @@ Request',
       'label' => 'Type',
       'weight' => '-3',
       'description' => 'The type of ticket your submitting, as question, bug or request.',
-      'type' => 'optionwidgets_buttons',
+      'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
     ),
   );

@@ -23,7 +23,7 @@ function support_tickets_node_info() {
       'module' => 'features',
       'description' => t('A simple CCK driven way to track things that need to be done and who\'s done them.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Subject'),
       'has_body' => '1',
       'body_label' => t('Description'),
       'min_word_count' => '10',
