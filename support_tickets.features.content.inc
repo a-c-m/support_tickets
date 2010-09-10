@@ -134,7 +134,7 @@ function support_tickets_content_default_fields() {
       'feed_ical_item' => 0,
       'feed_ical' => 0,
     ),
-    'advanced_view' => 'support_project_list',
+    'advanced_view' => 'support_ticket_bundle_ref',
     'advanced_view_args' => '',
     'widget' => array(
       'autocomplete_match' => 'contains',
