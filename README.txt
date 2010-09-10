@@ -21,3 +21,7 @@ AUTHOR
 Alex McFadyen (aka a_c_m)
 Openly Connected
 www.openlyconnected.com
+
+Mike Carter (budda)
+Ixis
+www.ixis.co.uk
