@@ -8,3 +8,57 @@ include_once('support_tickets.features.inc');
 function support_tickets_init() {
   drupal_add_css(drupal_get_path('module', 'support_tickets') .'/support_tickets.css');
 }
+
+/** 
+ * Implementation of hook_menu(). 
+ */
+function support_tickets_menu() {
+  $items['admin/settings/support-tickets'] = array(
+    'title' => 'Support Tickets',
+    'description' => 'TO BE COMPLETED',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('support_tickets_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+function support_tickets_content_default_fields_alter(&$fields) {
+  dpr($fields);
+}
+
+
+function support_tickets_views_default_views_alter(&$views) {
+  if (isset($views['support_ticket_list'])) {
+  
+    if($bundle = variable_get('support_ticket_bundle_type', '')) {
+      // 
+      $fields['support_ticket-field_project']['referenceable_types'][$bundle] = 1;
+    } else {
+      // Hide the column in Views
+      unset($views['support_ticket_list']->display['default']->display_options['fields']['field_project_nid']);    
+    }
+  }
+}
+
+
+/**
+ * Form API callback for admin/settings/blog.
+ */
+function support_tickets_admin_settings() {
+  $form['bundle_type'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Grouping'),
+    '#description' => t('You can group support tickets in to bundles by associating them with an existing content type in Open Atrium.'),
+  );
+
+  $form['bundle_type']['support_ticket_bundle_type'] = array(
+    '#title' => t('Project content type'),
+    '#description' => t('Select the type of content you wish your tickets to be linked with'),
+    '#type' => 'select',
+    '#options' => node_get_types('names'),
+    '#default_value' => variable_get('support_ticket_bundle_type', ''),
+  );
+
+  return system_settings_form($form);
+}
