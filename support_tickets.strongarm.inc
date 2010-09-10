@@ -43,6 +43,41 @@ function support_tickets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_driven:type:support_ticket:driven_props';
+  $strongarm->value = array(
+    'enabled' => 1,
+    'cck' => array(
+      'field_ticket_type' => array(
+        'enabled' => 1,
+      ),
+      'field_ticket_priority' => array(
+        'enabled' => 1,
+      ),
+      'field_ticket_state' => array(
+        'enabled' => 1,
+      ),
+      'field_assigned_to' => array(
+        'enabled' => 1,
+      ),
+    ),
+  );
+
+  $export['comment_driven:type:support_ticket:driven_props'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_driven:type:support_ticket:settings';
+  $strongarm->value = array(
+    'empty_comment' => 1,
+    'fieldset:collapsed' => 1,
+    'fieldset:title' => 'Case information',
+    'live_render' => '0',
+  );
+
+  $export['comment_driven:type:support_ticket:settings'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_support_ticket';
   $strongarm->value = '0';
 
@@ -58,7 +93,7 @@ function support_tickets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_support_ticket';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
 
   $export['comment_subject_field_support_ticket'] = $strongarm;
   $strongarm = new stdClass;
@@ -73,14 +108,16 @@ function support_tickets_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'content_extra_weights_support_ticket';
   $strongarm->value = array(
-    'title' => '-5',
-    'body_field' => '3',
-    'revision_information' => '5',
-    'comment_settings' => '7',
-    'menu' => '1',
-    'book' => '4',
-    'attachments' => '6',
-    'og_nodeapi' => '2',
+    'title' => '27',
+    'body_field' => '35',
+    'revision_information' => '37',
+    'author' => '40',
+    'options' => '41',
+    'comment_settings' => '39',
+    'menu' => '33',
+    'book' => '36',
+    'attachments' => '38',
+    'og_nodeapi' => '34',
   );
 
   $export['content_extra_weights_support_ticket'] = $strongarm;

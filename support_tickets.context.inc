@@ -10,14 +10,14 @@ function support_tickets_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'support_ticket';
   $context->description = 'A simple CCK driven ticketing system';
-  $context->tag = 'Support ticket';
+  $context->tag = 'Support';
   $context->conditions = array(
     'node' => array(
       'values' => array(
         'support_ticket' => 'support_ticket',
       ),
       'options' => array(
-        'node_form' => 1,
+        'node_form' => '1',
       ),
     ),
     'views' => array(
@@ -28,17 +28,25 @@ function support_tickets_context_default_contexts() {
   );
   $context->reactions = array(
     'block' => array(
-      'blocks' => array(),
+      'blocks' => array(
+        'views-support_ticket_list-block_1' => array(
+          'module' => 'views',
+          'delta' => 'support_ticket_list-block_1',
+          'region' => 'right',
+          'weight' => 0,
+        ),
+      ),
       'layout' => 'default',
     ),
-    'menu' => 'support-tickets',
+    'breadcrumb' => 'support',
+    'menu' => 'support',
   );
   $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('A simple CCK driven ticketing system');
-  t('Support ticket');
+  t('Support');
 
   $export['support_ticket'] = $context;
   return $export;

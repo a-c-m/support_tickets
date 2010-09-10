@@ -71,10 +71,85 @@ function support_tickets_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Assigned to',
-      'weight' => 0,
+      'weight' => '31',
       'description' => '',
       'type' => 'userreference_autocomplete',
       'module' => 'userreference',
+    ),
+  );
+
+  // Exported field: field_project
+  $fields['support_ticket-field_project'] = array(
+    'field_name' => 'field_project',
+    'type_name' => 'support_ticket',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      '5' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'nodereference',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'nodereference',
+    'active' => '1',
+    'referenceable_types' => array(
+      'book' => 0,
+      'event' => 0,
+      'group' => 0,
+      'logged_time' => 0,
+      'profile' => 0,
+      'shoutbox' => 0,
+      'support_project' => 0,
+      'support_ticket' => 0,
+      'feed_ical_item' => 0,
+      'feed_ical' => 0,
+    ),
+    'advanced_view' => 'support_project_list',
+    'advanced_view_args' => '',
+    'widget' => array(
+      'autocomplete_match' => 'contains',
+      'size' => 60,
+      'default_value' => array(
+        '0' => array(
+          'nid' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Project',
+      'weight' => '32',
+      'description' => 'A ticket can belong to a project.',
+      'type' => 'nodereference_select',
+      'module' => 'nodereference',
     ),
   );
 
@@ -140,7 +215,7 @@ Low',
       ),
       'default_value_php' => NULL,
       'label' => 'Priority',
-      'weight' => '-2',
+      'weight' => '29',
       'description' => 'How important this ticket is. Tickets marked as EMERGENCY or High may be completed done out of hours and may cost extra.',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -209,7 +284,7 @@ Rejected',
       ),
       'default_value_php' => NULL,
       'label' => 'Status',
-      'weight' => '-1',
+      'weight' => '30',
       'description' => 'The current state of the ticket',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -276,7 +351,7 @@ Request',
       ),
       'default_value_php' => NULL,
       'label' => 'Type',
-      'weight' => '-3',
+      'weight' => '28',
       'description' => 'The type of ticket your submitting, as question, bug or request.',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -287,6 +362,7 @@ Request',
   // Included for use with string extractors like potx.
   t('Assigned to');
   t('Priority');
+  t('Project');
   t('Status');
   t('Type');
 
