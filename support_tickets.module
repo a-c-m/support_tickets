@@ -23,21 +23,19 @@ function support_tickets_menu() {
   return $items;
 }
 
-function support_tickets_content_default_fields_alter(&$fields) {
-  dpr($fields);
-}
-
 
 function support_tickets_views_default_views_alter(&$views) {
+
   if (isset($views['support_ticket_list'])) {
-  
-    if($bundle = variable_get('support_ticket_bundle_type', '')) {
-      // 
-      $fields['support_ticket-field_project']['referenceable_types'][$bundle] = 1;
-    } else {
+    if(!$bundle = variable_get('support_ticket_bundle_type', '')) {
       // Hide the column in Views
       unset($views['support_ticket_list']->display['default']->display_options['fields']['field_project_nid']);    
     }
+  }
+  
+  if (isset($views['support_ticket_bundle_ref'])) {
+    // List nodes of the type specified in the settings page
+    $views['support_ticket_bundle_ref']->display['default']->display_options['filters']['type']['value'][$bundle] = $bundle;
   }
 }
 
