@@ -22,6 +22,6 @@ Alex McFadyen (aka a_c_m)
 Openly Connected
 www.openlyconnected.com
 
-Mike Carter (budda)
+Mike Carter (aka budda)
 Ixis
 www.ixis.co.uk
