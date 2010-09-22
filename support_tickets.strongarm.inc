@@ -79,7 +79,7 @@ function support_tickets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_support_ticket';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
 
   $export['comment_form_location_support_ticket'] = $strongarm;
   $strongarm = new stdClass;
@@ -109,15 +109,15 @@ function support_tickets_strongarm() {
   $strongarm->name = 'content_extra_weights_support_ticket';
   $strongarm->value = array(
     'title' => '27',
-    'body_field' => '35',
-    'revision_information' => '37',
-    'author' => '40',
-    'options' => '41',
-    'comment_settings' => '39',
-    'menu' => '33',
-    'book' => '36',
-    'attachments' => '38',
-    'og_nodeapi' => '34',
+    'body_field' => '36',
+    'revision_information' => '38',
+    'author' => '41',
+    'options' => '42',
+    'comment_settings' => '40',
+    'menu' => '34',
+    'book' => '37',
+    'attachments' => '39',
+    'og_nodeapi' => '35',
   );
 
   $export['content_extra_weights_support_ticket'] = $strongarm;

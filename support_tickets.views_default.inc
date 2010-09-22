@@ -465,6 +465,62 @@ function support_tickets_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('arguments', array(
+    'field_project_nid' => array(
+      'default_action' => 'ignore',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => 'Tickets for project %1',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'node',
+      'validate_fail' => 'empty',
+      'break_phrase' => 0,
+      'not' => 0,
+      'id' => 'field_project_nid',
+      'table' => 'node_data_field_project',
+      'field' => 'field_project_nid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '4' => 0,
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'support_project' => 'support_project',
+        'book' => 0,
+        'event' => 0,
+        'feed_ical' => 0,
+        'feed_ical_item' => 0,
+        'group' => 0,
+        'profile' => 0,
+        'shoutbox' => 0,
+        'logged_time' => 0,
+        'support_ticket' => 0,
+      ),
+      'validate_argument_node_access' => 1,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'group' => 0,
+      ),
+      'validate_argument_php' => '',
+    ),
+  ));
   $handler->override_option('filters', array(
     'type' => array(
       'operator' => 'in',
@@ -496,6 +552,67 @@ function support_tickets_views_default_views() {
       'field' => 'current',
       'relationship' => 'none',
     ),
+    'title' => array(
+      'operator' => 'contains',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'title_op',
+        'identifier' => 'keywords',
+        'label' => 'Search',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'case' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'field_assigned_to_uid' => array(
+      'operator' => 'or',
+      'value' => array(),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'field_assigned_to_uid_op',
+        'identifier' => 'assigned',
+        'label' => 'Assigned',
+        'optional' => 1,
+        'single' => 1,
+        'remember' => 0,
+        'reduce' => 0,
+      ),
+      'id' => 'field_assigned_to_uid',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+    'field_ticket_priority_value_many_to_one' => array(
+      'operator' => 'or',
+      'value' => array(),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'field_ticket_priority_value_many_to_one_op',
+        'identifier' => 'field_ticket_priority_value_many_to_one',
+        'label' => 'Priority',
+        'optional' => 1,
+        'single' => 0,
+        'remember' => 0,
+        'reduce' => 0,
+      ),
+      'id' => 'field_ticket_priority_value_many_to_one',
+      'table' => 'node_data_field_ticket_priority',
+      'field' => 'field_ticket_priority_value_many_to_one',
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
     'field_ticket_state_value_many_to_one' => array(
       'operator' => 'or',
       'value' => array(
@@ -521,27 +638,6 @@ function support_tickets_views_default_views() {
       'relationship' => 'none',
       'reduce_duplicates' => 0,
     ),
-    'field_ticket_priority_value_many_to_one' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_ticket_priority_value_many_to_one_op',
-        'identifier' => 'field_ticket_priority_value_many_to_one',
-        'label' => 'Priority',
-        'optional' => 1,
-        'single' => 0,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'id' => 'field_ticket_priority_value_many_to_one',
-      'table' => 'node_data_field_ticket_priority',
-      'field' => 'field_ticket_priority_value_many_to_one',
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
     'field_ticket_type_value_many_to_one' => array(
       'operator' => 'or',
       'value' => array(),
@@ -562,6 +658,16 @@ function support_tickets_views_default_views() {
       'field' => 'field_ticket_type_value_many_to_one',
       'relationship' => 'none',
       'reduce_duplicates' => 0,
+    ),
+    'field_assigned_to_uid_1' => array(
+      'id' => 'field_assigned_to_uid_1',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
+    ),
+    'field_assigned_to_uid_2' => array(
+      'id' => 'field_assigned_to_uid_2',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
     ),
   ));
   $handler->override_option('access', array(
@@ -627,6 +733,8 @@ function support_tickets_views_default_views() {
     'default' => 'field_ticket_priority_value',
   ));
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->override_option('css_class', 'cases');
+  $handler->override_option('exposed_block', TRUE);
   $handler->override_option('path', 'support/tickets');
   $handler->override_option('menu', array(
     'type' => 'default tab',
@@ -642,7 +750,7 @@ function support_tickets_views_default_views() {
     'weight' => '0',
     'name' => 'features',
   ));
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler = $view->new_display('block', 'Latest Tickets', 'block_1');
   $handler->override_option('fields', array(
     'field_ticket_priority_value' => array(
       'label' => 'Priority',
@@ -810,8 +918,9 @@ function support_tickets_views_default_views() {
       'relationship' => 'none',
     ),
   ));
-  $handler->override_option('title', 'Latest Support Tickets');
+  $handler->override_option('title', 'Latest support tickets');
   $handler->override_option('items_per_page', 5);
+  $handler->override_option('use_pager', '0');
   $handler->override_option('use_more', 1);
   $handler->override_option('use_more_always', 1);
   $handler->override_option('use_more_text', 'View all support tickets');
@@ -863,10 +972,182 @@ function support_tickets_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
+  $handler = $view->new_display('block', 'My Tickets', 'block_2');
+  $handler->override_option('fields', array(
+    'name' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_user' => 1,
+      'overwrite_anonymous' => 0,
+      'anonymous_text' => '',
+      'exclude' => 0,
+      'id' => 'name',
+      'table' => 'users',
+      'field' => 'name',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'last_updated' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 0,
+        'ellipsis' => 0,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'date_format' => 'time ago',
+      'custom_date_format' => '',
+      'reldate' => '0',
+      'exclude' => 0,
+      'id' => 'last_updated',
+      'table' => 'node_comment_statistics',
+      'field' => 'last_updated',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 0,
+        'ellipsis' => 0,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 1,
+      'spaces' => array(
+        'frontpage' => 0,
+        'type' => 'spaces_og',
+      ),
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'support_ticket' => 'support_ticket',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'current' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'current',
+      'table' => 'spaces',
+      'field' => 'current',
+      'relationship' => 'none',
+    ),
+    'field_assigned_to_uid_2' => array(
+      'operator' => 'or',
+      'value' => array(),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'field_assigned_to_uid_2',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+  ));
+  $handler->override_option('title', 'My tickets');
+  $handler->override_option('items_per_page', 5);
+  $handler->override_option('use_pager', 'mini');
+  $handler->override_option('style_plugin', 'list');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'type' => 'ul',
+  ));
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
   $translatables['support_ticket_list'] = array(
-    t('Block'),
     t('Defaults'),
-    t('Latest Support Tickets'),
+    t('Latest Tickets'),
+    t('Latest support tickets'),
+    t('My Tickets'),
+    t('My tickets'),
     t('Page'),
     t('Support Tickets'),
     t('View all support tickets'),

@@ -29,11 +29,23 @@ function support_tickets_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views--exp-support_ticket_list-page_1' => array(
+          'module' => 'views',
+          'delta' => '-exp-support_ticket_list-page_1',
+          'region' => 'right',
+          'weight' => 0,
+        ),
+        'views-support_ticket_list-block_2' => array(
+          'module' => 'views',
+          'delta' => 'support_ticket_list-block_2',
+          'region' => 'right',
+          'weight' => 1,
+        ),
         'views-support_ticket_list-block_1' => array(
           'module' => 'views',
           'delta' => 'support_ticket_list-block_1',
           'region' => 'right',
-          'weight' => 0,
+          'weight' => 2,
         ),
       ),
       'layout' => 'default',

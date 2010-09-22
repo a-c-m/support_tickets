@@ -11,7 +11,7 @@ function support_tickets_content_default_fields() {
     'field_name' => 'field_assigned_to',
     'type_name' => 'support_ticket',
     'display_settings' => array(
-      'weight' => 0,
+      'weight' => '31',
       'parent' => '',
       'label' => array(
         'format' => 'inline',
@@ -83,19 +83,20 @@ function support_tickets_content_default_fields() {
     'field_name' => 'field_project',
     'type_name' => 'support_ticket',
     'display_settings' => array(
+      'weight' => '32',
+      'parent' => '',
       'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'inline',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'plain',
         'exclude' => 0,
       ),
       'full' => array(
+        'format' => 'plain',
+        'exclude' => 0,
+      ),
+      '5' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -158,7 +159,7 @@ function support_tickets_content_default_fields() {
     'field_name' => 'field_ticket_priority',
     'type_name' => 'support_ticket',
     'display_settings' => array(
-      'weight' => '-2',
+      'weight' => '29',
       'parent' => '',
       'label' => array(
         'format' => 'inline',
@@ -227,7 +228,7 @@ Low',
     'field_name' => 'field_ticket_state',
     'type_name' => 'support_ticket',
     'display_settings' => array(
-      'weight' => '-1',
+      'weight' => '30',
       'parent' => '',
       'label' => array(
         'format' => 'inline',
@@ -296,7 +297,7 @@ Rejected',
     'field_name' => 'field_ticket_type',
     'type_name' => 'support_ticket',
     'display_settings' => array(
-      'weight' => '-3',
+      'weight' => '28',
       'parent' => '',
       'label' => array(
         'format' => 'inline',
