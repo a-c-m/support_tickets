@@ -16,7 +16,7 @@ function support_tickets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_controls_support_ticket';
-  $strongarm->value = '3';
+  $strongarm->value = '1';
 
   $export['comment_controls_support_ticket'] = $strongarm;
   $strongarm = new stdClass;
@@ -30,7 +30,7 @@ function support_tickets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_order_support_ticket';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
 
   $export['comment_default_order_support_ticket'] = $strongarm;
   $strongarm = new stdClass;
@@ -59,6 +59,12 @@ function support_tickets_strongarm() {
       'field_assigned_to' => array(
         'enabled' => 1,
       ),
+      'field_project' => array(
+        'enabled' => 0,
+      ),
+      'field_due' => array(
+        'enabled' => 0,
+      ),
     ),
   );
 
@@ -71,7 +77,7 @@ function support_tickets_strongarm() {
     'empty_comment' => 1,
     'fieldset:collapsed' => 1,
     'fieldset:title' => 'Case information',
-    'live_render' => '0',
+    'live_render' => '1',
   );
 
   $export['comment_driven:type:support_ticket:settings'] = $strongarm;
@@ -127,6 +133,7 @@ function support_tickets_strongarm() {
   $strongarm->name = 'node_options_support_ticket';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
 
   $export['node_options_support_ticket'] = $strongarm;

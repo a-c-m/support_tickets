@@ -126,6 +126,13 @@ function support_tickets_views_default_views() {
   $view->api_version = 2;
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('relationships', array(
+    'field_assigned_to_uid' => array(
+      'id' => 'field_assigned_to_uid',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
+    ),
+  ));
   $handler->override_option('fields', array(
     'field_project_nid' => array(
       'label' => 'Project',
@@ -314,10 +321,10 @@ function support_tickets_views_default_views() {
         'suffix' => '',
         'target' => '',
         'help' => '',
-        'trim' => 1,
+        'trim' => 0,
         'max_length' => '10',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
+        'word_boundary' => 0,
+        'ellipsis' => 0,
         'html' => 0,
         'strip_tags' => 0,
       ),
@@ -338,6 +345,9 @@ function support_tickets_views_default_views() {
       'table' => 'node_data_field_assigned_to',
       'field' => 'field_assigned_to_uid',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'field_ticket_type_value' => array(
       'label' => 'Type',
@@ -973,6 +983,20 @@ function support_tickets_views_default_views() {
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
   $handler = $view->new_display('block', 'My Tickets', 'block_2');
+  $handler->override_option('relationships', array(
+    'field_assigned_to_uid' => array(
+      'label' => 'Assigned to',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_assigned_to_uid',
+      'table' => 'node_data_field_assigned_to',
+      'field' => 'field_assigned_to_uid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
     'name' => array(
       'label' => '',
@@ -1113,23 +1137,22 @@ function support_tickets_views_default_views() {
       'field' => 'current',
       'relationship' => 'none',
     ),
-    'field_assigned_to_uid_2' => array(
-      'operator' => 'or',
-      'value' => array(),
+    'uid_current' => array(
+      'operator' => '=',
+      'value' => '1',
       'group' => '0',
       'exposed' => FALSE,
       'expose' => array(
         'operator' => FALSE,
         'label' => '',
       ),
-      'id' => 'field_assigned_to_uid_2',
-      'table' => 'node_data_field_assigned_to',
-      'field' => 'field_assigned_to_uid',
+      'id' => 'uid_current',
+      'table' => 'users',
+      'field' => 'uid_current',
       'override' => array(
         'button' => 'Use default',
       ),
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
+      'relationship' => 'field_assigned_to_uid',
     ),
   ));
   $handler->override_option('title', 'My tickets');
