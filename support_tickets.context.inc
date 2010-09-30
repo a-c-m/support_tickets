@@ -22,7 +22,8 @@ function support_tickets_context_default_contexts() {
     ),
     'views' => array(
       'values' => array(
-        'support_ticket_list' => 'support_ticket_list',
+        'support_ticket_list:page_1' => 'support_ticket_list:page_1',
+        'support_ticket_user:page_1' => 'support_ticket_user:page_1',
       ),
     ),
   );
