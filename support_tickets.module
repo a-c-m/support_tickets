@@ -37,9 +37,17 @@ function support_tickets_menu_alter(&$items) {
 // Make the Add Ticket button project context aware
 function support_tickets_context_links_alter(&$links) {
 
-  if (context_get('context', 'support_ticket') && isset($links['support_ticket']) && $space = spaces_get_space()) {
+  if (context_get('context', 'support_ticket') && isset($links['support_ticket']) && $space = spaces_get_space() && is_numeric(arg(1)) ) {
     $item = menu_get_item('node/add/support-ticket');
-    $project_id = arg(1);
+    
+    if (arg(0) == 'support') {
+      // Make the add button default to the currently viewed project tickets
+      $project_id = arg(1);
+    } elseif (arg(0) == 'node') {
+      // Make the add  button default to the same project as the currently viewed ticket
+      $ticket = node_load(arg(1));
+      $project_id = $ticket->field_project[0]['nid'];
+    }
     
     if ($item['access'] && !empty($project_id)) {
       $links['support_ticket']['query'] = "edit[field_project][nid][nid]={$project_id}";
