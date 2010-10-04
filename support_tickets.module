@@ -11,8 +11,11 @@ function support_tickets_init() {
 
 /** 
  * Implementation of hook_menu(). 
+ * @!todo https://community.openatrium.com/documentation-en/node/590#using-the-__count__-menu-
  */
 function support_tickets_menu() {
+  $items = array();
+
   $items['admin/settings/support-tickets'] = array(
     'title' => 'Support Tickets',
     'description' => 'TO BE COMPLETED',
@@ -20,7 +23,39 @@ function support_tickets_menu() {
     'page arguments' => array('support_tickets_admin_settings'),
     'access arguments' => array('administer site configuration'),
   );
+  
   return $items;
+}
+
+function support_tickets_menu_alter(&$items) {
+ 
+  // Remove support_ticket node add page.
+  if (isset($items['node/add/support_ticket'])) {
+    unset($items['node/add/support_ticket']);
+  }
+}
+
+// Make the Add Ticket button project context aware
+function support_tickets_context_links_alter(&$links) {
+
+  if (context_get('context', 'support_ticket') && isset($links['support_ticket']) && $space = spaces_get_space()) {
+    $item = menu_get_item('node/add/support-ticket');
+    $project_id = arg(1);
+    
+    if ($item['access'] && !empty($project_id)) {
+      $links['support_ticket']['query'] = "edit[field_project][nid][nid]={$project_id}";
+    }
+  }
+}
+
+
+function support_tickets_user_links() {
+  $links = array();
+  
+  $links[] = l('fat support', 'fat/support/103');
+  $links[] = l('cat group', 'fat');
+  
+  return $links;
 }
 
 
