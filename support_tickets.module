@@ -28,7 +28,6 @@ function support_tickets_menu() {
 }
 
 function support_tickets_menu_alter(&$items) {
- 
   // Remove support_ticket node add page.
   if (isset($items['node/add/support_ticket'])) {
     unset($items['node/add/support_ticket']);
@@ -49,6 +48,7 @@ function support_tickets_context_links_alter(&$links) {
 }
 
 
+/*
 function support_tickets_user_links() {
   $links = array();
   
@@ -57,6 +57,7 @@ function support_tickets_user_links() {
   
   return $links;
 }
+*/
 
 
 function support_tickets_views_default_views_alter(&$views) {
