@@ -201,17 +201,17 @@ function support_tickets_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => 'EMERGENCY
-High
-Normal
-Low',
+    'allowed_values' => '3|High
+2|Normal
+1|Low
+9|EMERGENCY',
     'allowed_values_php' => '',
     'widget' => array(
       'rows' => 5,
       'size' => '60',
       'default_value' => array(
         '0' => array(
-          'value' => 'Normal',
+          'value' => '',
         ),
       ),
       'default_value_php' => NULL,
@@ -275,7 +275,8 @@ Open
 Needs feedback
 Complete
 On-hold
-Rejected',
+Rejected
+Duplicate',
     'allowed_values_php' => '',
     'widget' => array(
       'default_value' => array(

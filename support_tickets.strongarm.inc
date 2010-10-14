@@ -16,7 +16,7 @@ function support_tickets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_controls_support_ticket';
-  $strongarm->value = '1';
+  $strongarm->value = '3';
 
   $export['comment_controls_support_ticket'] = $strongarm;
   $strongarm = new stdClass;

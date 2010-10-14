@@ -26,7 +26,7 @@ function support_tickets_node_info() {
       'title_label' => t('Subject'),
       'has_body' => '1',
       'body_label' => t('Description'),
-      'min_word_count' => '10',
+      'min_word_count' => '1',
       'help' => t('A support ticket is used to document a task to be executed.'),
     ),
   );
