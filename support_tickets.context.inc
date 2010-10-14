@@ -36,9 +36,9 @@ function support_tickets_context_default_contexts() {
           'region' => 'right',
           'weight' => 0,
         ),
-        'views-support_ticket_list-block_2' => array(
+        'views-support_ticket_user-block_2' => array(
           'module' => 'views',
-          'delta' => 'support_ticket_list-block_2',
+          'delta' => 'support_ticket_user-block_2',
           'region' => 'right',
           'weight' => 1,
         ),
