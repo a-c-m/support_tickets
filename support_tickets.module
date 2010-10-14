@@ -1,6 +1,8 @@
 <?php
 
 include_once('support_tickets.features.inc');
+include_once('support_tickets.theme.inc');
+
 
 /**
 * Implementation of hook_init().
@@ -56,18 +58,6 @@ function support_tickets_context_links_alter(&$links) {
 }
 
 
-/*
-function support_tickets_user_links() {
-  $links = array();
-  
-  $links[] = l('fat support', 'fat/support/103');
-  $links[] = l('cat group', 'fat');
-  
-  return $links;
-}
-*/
-
-
 function support_tickets_views_default_views_alter(&$views) {
 
   if (isset($views['support_ticket_list'])) {
@@ -104,35 +94,3 @@ function support_tickets_admin_settings() {
   return system_settings_form($form);
 }
 
-
-/**
- * THEME ==============================================================
- */
-
-
-/**
- * Preprocessor for theme('views_view_table').
- *
- * Adds a class name to the table so that we can show priority values as images
- * and other nice things.
- */
-function support_tickets_preprocess_views_view_table(&$vars) {
-  $view = $vars['view'];
-  
-  if ($view->name == 'support_ticket_list') {
-    $vars['class'] .= " cases";
-
-/*
-    global $user;
-    $inactive_states = atrium_casetracker_get_inactive_states();
-    foreach ($view->result as $index => $row) {
-      if (!empty($row->casetracker_case_assign_to) && $row->casetracker_case_assign_to == $user->uid) {
-        $vars['row_classes'][$index][] = 'mine';
-      }
-      if (!empty($row->casetracker_case_case_status_id) && in_array($row->casetracker_case_case_status_id, $inactive_states)) {
-        $vars['row_classes'][$index][] = 'status-inactive';
-      }
-    }
-*/
-  }
-}

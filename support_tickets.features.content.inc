@@ -93,7 +93,7 @@ function support_tickets_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'plain',
+        'format' => 'default',
         'exclude' => 0,
       ),
       '5' => array(

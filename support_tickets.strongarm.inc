@@ -203,7 +203,7 @@ function support_tickets_strongarm() {
     ),
     'notifications' => array(
       'region' => 'right',
-      'weight' => '2',
+      'weight' => '6',
       'has_required' => FALSE,
       'title' => 'Notifications',
       'collapsed' => 0,
@@ -227,25 +227,25 @@ function support_tickets_strongarm() {
     ),
     'field_ticket_type' => array(
       'region' => 'right',
-      'weight' => '3',
+      'weight' => '1',
       'has_required' => TRUE,
       'title' => 'Type',
     ),
     'field_ticket_priority' => array(
       'region' => 'right',
-      'weight' => '4',
+      'weight' => '2',
       'has_required' => TRUE,
       'title' => 'Priority',
     ),
     'field_ticket_state' => array(
       'region' => 'right',
-      'weight' => '5',
+      'weight' => '3',
       'has_required' => TRUE,
       'title' => 'Status',
     ),
     'field_assigned_to' => array(
       'region' => 'right',
-      'weight' => '1',
+      'weight' => '5',
       'has_required' => FALSE,
       'title' => 'Assigned to',
       'hidden' => 0,
@@ -259,7 +259,7 @@ function support_tickets_strongarm() {
     ),
     'field_due' => array(
       'region' => 'right',
-      'weight' => '6',
+      'weight' => '4',
       'has_required' => FALSE,
       'title' => 'Due date',
       'hidden' => 0,

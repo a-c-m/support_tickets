@@ -9,8 +9,13 @@ span.spaces-feature.feature-support_tickets {
 #edit-field-ticket-type-value-wrapper,
 #edit-field-ticket-priority-value-wrapper,
 #edit-field-ticket-state-value-wrapper {
-  float: left;
+/*   float: left; */
   margin-left: 6px;
   margin-right: 6px;
   width: 42%;
+}
+
+.view-support-ticket-list tr.mine {
+  background-color: pink;
+  font-weight: bold;
 }
