@@ -1568,6 +1568,64 @@ function support_tickets_views_default_views() {
       ),
       'validate_argument_php' => '',
     ),
+    'uid' => array(
+      'default_action' => 'ignore',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'none',
+      'validate_fail' => 'not found',
+      'break_phrase' => 0,
+      'not' => 0,
+      'id' => 'uid',
+      'table' => 'users',
+      'field' => 'uid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '4' => 0,
+      ),
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'field_assigned_to_uid',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'book' => 0,
+        'event' => 0,
+        'feed_ical' => 0,
+        'feed_ical_item' => 0,
+        'group' => 0,
+        'profile' => 0,
+        'shoutbox' => 0,
+        'logged_time' => 0,
+        'support_project' => 0,
+        'support_ticket' => 0,
+        'client_profile' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'group' => 0,
+      ),
+      'validate_argument_php' => '',
+    ),
   ));
   $handler->override_option('filters', array(
     'type' => array(
@@ -1586,107 +1644,7 @@ function support_tickets_views_default_views() {
       'field' => 'type',
       'relationship' => 'none',
     ),
-    'current' => array(
-      'operator' => '=',
-      'value' => '',
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'current',
-      'table' => 'spaces',
-      'field' => 'current',
-      'relationship' => 'none',
-    ),
-    'title' => array(
-      'operator' => 'contains',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'title_op',
-        'identifier' => 'keywords',
-        'label' => 'Search',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'case' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-    ),
-    'field_ticket_priority_value_many_to_one' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_ticket_priority_value_many_to_one_op',
-        'identifier' => 'field_ticket_priority_value_many_to_one',
-        'label' => 'Priority',
-        'optional' => 1,
-        'single' => 0,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'id' => 'field_ticket_priority_value_many_to_one',
-      'table' => 'node_data_field_ticket_priority',
-      'field' => 'field_ticket_priority_value_many_to_one',
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-    'field_ticket_state_value_many_to_one' => array(
-      'operator' => 'or',
-      'value' => array(
-        'New' => 'New',
-        'Open' => 'Open',
-        'Needs feedback' => 'Needs feedback',
-      ),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_ticket_state_value_many_to_one_op',
-        'identifier' => 'field_ticket_state_value_many_to_one',
-        'label' => 'Status',
-        'optional' => 1,
-        'single' => 0,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'id' => 'field_ticket_state_value_many_to_one',
-      'table' => 'node_data_field_ticket_state',
-      'field' => 'field_ticket_state_value_many_to_one',
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-    'field_ticket_type_value_many_to_one' => array(
-      'operator' => 'or',
-      'value' => array(),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_ticket_type_value_many_to_one_op',
-        'identifier' => 'field_ticket_type_value_many_to_one',
-        'label' => 'Type',
-        'optional' => 1,
-        'single' => 0,
-        'remember' => 0,
-        'reduce' => 0,
-      ),
-      'id' => 'field_ticket_type_value_many_to_one',
-      'table' => 'node_data_field_ticket_type',
-      'field' => 'field_ticket_type_value_many_to_one',
-      'relationship' => 'none',
-      'reduce_duplicates' => 0,
-    ),
-    'uid_current' => array(
+    'status' => array(
       'operator' => '=',
       'value' => '1',
       'group' => '0',
@@ -1695,10 +1653,15 @@ function support_tickets_views_default_views() {
         'operator' => FALSE,
         'label' => '',
       ),
-      'id' => 'uid_current',
-      'table' => 'users',
-      'field' => 'uid_current',
-      'relationship' => 'field_assigned_to_uid',
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'field_ticket_state_value_many_to_one' => array(
+      'id' => 'field_ticket_state_value_many_to_one',
+      'table' => 'node_data_field_ticket_state',
+      'field' => 'field_ticket_state_value_many_to_one',
     ),
   ));
   $handler->override_option('access', array(
@@ -1973,6 +1936,23 @@ function support_tickets_views_default_views() {
       'relationship' => 'none',
       'reduce_duplicates' => 0,
     ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('title', 'My tickets');
   $handler->override_option('items_per_page', 5);
@@ -1987,7 +1967,78 @@ function support_tickets_views_default_views() {
   ));
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler = $view->new_display('page', 'Users Tickets Page', 'page_1');
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'support_ticket' => 'support_ticket',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'field_ticket_state_value_many_to_one' => array(
+      'operator' => 'or',
+      'value' => array(
+        'New' => 'New',
+        'Open' => 'Open',
+        'Needs feedback' => 'Needs feedback',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'field_ticket_state_value_many_to_one',
+      'table' => 'node_data_field_ticket_state',
+      'field' => 'field_ticket_state_value_many_to_one',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+    'uid_current' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'uid_current',
+      'table' => 'users',
+      'field' => 'uid_current',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_assigned_to_uid',
+    ),
+  ));
   $handler->override_option('path', 'support/mytickets');
   $handler->override_option('menu', array(
     'type' => 'tab',
@@ -2003,12 +2054,256 @@ function support_tickets_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('page', 'User dashboard page', 'page_2');
+  $handler->override_option('arguments', array(
+    'uid' => array(
+      'default_action' => 'empty',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => 'Tickets assigned to %1',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'user',
+      'validate_fail' => 'empty',
+      'break_phrase' => 0,
+      'not' => 0,
+      'id' => 'uid',
+      'table' => 'users',
+      'field' => 'uid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+        '4' => 0,
+      ),
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'field_assigned_to_uid',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'book' => 0,
+        'event' => 0,
+        'feed_ical' => 0,
+        'feed_ical_item' => 0,
+        'group' => 0,
+        'profile' => 0,
+        'shoutbox' => 0,
+        'logged_time' => 0,
+        'support_project' => 0,
+        'support_ticket' => 0,
+        'client_profile' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'group' => 0,
+      ),
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'support_ticket' => 'support_ticket',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'field_ticket_state_value_many_to_one' => array(
+      'operator' => 'or',
+      'value' => array(
+        'New' => 'New',
+        'Open' => 'Open',
+        'Needs feedback' => 'Needs feedback',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => 'field_ticket_state_value_many_to_one_op',
+        'label' => 'Status',
+        'use_operator' => 0,
+        'identifier' => 'field_ticket_state_value_many_to_one',
+        'optional' => 1,
+        'single' => 0,
+        'remember' => 0,
+        'reduce' => 0,
+      ),
+      'id' => 'field_ticket_state_value_many_to_one',
+      'table' => 'node_data_field_ticket_state',
+      'field' => 'field_ticket_state_value_many_to_one',
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'role',
+    'role' => array(
+      '2' => 2,
+    ),
+  ));
+  $handler->override_option('path', 'user/%/dashboard/support-tickets');
+  $handler->override_option('menu', array(
+    'type' => 'tab',
+    'title' => 'My tickets',
+    'description' => 'Your support tickets for all clients',
+    'weight' => '5',
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('arguments', array(
+    'uid' => array(
+      'id' => 'uid',
+      'table' => 'users',
+      'field' => 'uid',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'support_ticket' => 'support_ticket',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'field_ticket_state_value_many_to_one' => array(
+      'operator' => 'or',
+      'value' => array(
+        'New' => 'New',
+        'Open' => 'Open',
+        'Needs feedback' => 'Needs feedback',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'field_ticket_state_value_many_to_one',
+      'table' => 'node_data_field_ticket_state',
+      'field' => 'field_ticket_state_value_many_to_one',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('style_plugin', 'rss');
+  $handler->override_option('style_options', array(
+    'mission_description' => 1,
+    'description' => '',
+  ));
+  $handler->override_option('row_plugin', 'node_rss');
+  $handler->override_option('row_options', array(
+    'relationship' => 'none',
+    'item_length' => 'title',
+  ));
+  $handler->override_option('path', 'user/%/dashboard/support-tickets/feed');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array(
+    'page_2' => 'page_2',
+    'default' => 0,
+    'block_2' => 0,
+    'page_1' => 0,
+  ));
+  $handler->override_option('sitename_title', FALSE);
   $translatables['support_ticket_user'] = array(
     t('Defaults'),
+    t('Feed'),
     t('My Support Tickets'),
     t('My Tickets'),
     t('My tickets'),
-    t('Page'),
+    t('User dashboard page'),
+    t('Users Tickets Page'),
     t('all your tickets'),
   );
 

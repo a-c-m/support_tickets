@@ -13,6 +13,10 @@ function support_tickets_content_default_fields() {
     'display_settings' => array(
       'weight' => '31',
       'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 1,
+      ),
       'label' => array(
         'format' => 'inline',
       ),
@@ -25,10 +29,6 @@ function support_tickets_content_default_fields() {
         'exclude' => 0,
       ),
       '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -85,6 +85,10 @@ function support_tickets_content_default_fields() {
     'display_settings' => array(
       'weight' => '32',
       'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'inline',
       ),
@@ -97,10 +101,6 @@ function support_tickets_content_default_fields() {
         'exclude' => 0,
       ),
       '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -161,6 +161,10 @@ function support_tickets_content_default_fields() {
     'display_settings' => array(
       'weight' => '29',
       'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'inline',
       ),
@@ -173,10 +177,6 @@ function support_tickets_content_default_fields() {
         'exclude' => 0,
       ),
       '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -230,6 +230,10 @@ function support_tickets_content_default_fields() {
     'display_settings' => array(
       'weight' => '30',
       'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'inline',
       ),
@@ -242,10 +246,6 @@ function support_tickets_content_default_fields() {
         'exclude' => 0,
       ),
       '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -300,6 +300,10 @@ Duplicate',
     'display_settings' => array(
       'weight' => '28',
       'parent' => '',
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
       'label' => array(
         'format' => 'inline',
       ),
@@ -312,10 +316,6 @@ Duplicate',
         'exclude' => 0,
       ),
       '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
