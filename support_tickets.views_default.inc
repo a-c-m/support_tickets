@@ -2038,6 +2038,23 @@ function support_tickets_views_default_views() {
       ),
       'relationship' => 'field_assigned_to_uid',
     ),
+    'current' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'current',
+      'table' => 'spaces',
+      'field' => 'current',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('path', 'support/mytickets');
   $handler->override_option('menu', array(
