@@ -2056,6 +2056,8 @@ function support_tickets_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('empty', 'There are currently no tickets assigned to you. Why not check the main queue for any tickets you may be able to assist with?');
+  $handler->override_option('empty_format', '5');
   $handler->override_option('path', 'support/mytickets');
   $handler->override_option('menu', array(
     'type' => 'tab',
@@ -2319,6 +2321,7 @@ function support_tickets_views_default_views() {
     t('My Support Tickets'),
     t('My Tickets'),
     t('My tickets'),
+    t('There are currently no tickets assigned to you. Why not check the main queue for any tickets you may be able to assist with?'),
     t('User dashboard page'),
     t('Users Tickets Page'),
     t('all your tickets'),
