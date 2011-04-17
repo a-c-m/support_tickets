@@ -1,3 +1,9 @@
+NOTICE
+---------------------
+Further development stalled on this project due to the reliance on a module suite called Comment Driven which never worked properly. A migration process has been made available at https://github.com/budda/support_tickets/wiki/Migrating-from-support_tickets-to-Case-Tracker
+
+I have left the project here for technical reference only. Don't use it.
+
 ABOUT 
 ---------------------
 A very simple, extendable, ticketing system for use with Open Atrium.
