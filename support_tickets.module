@@ -1,6 +1,8 @@
 <?php
 
 include_once('support_tickets.features.inc');
+include_once('support_tickets.theme.inc');
+
 
 /**
 * Implementation of hook_init().
@@ -8,3 +10,87 @@ include_once('support_tickets.features.inc');
 function support_tickets_init() {
   drupal_add_css(drupal_get_path('module', 'support_tickets') .'/support_tickets.css');
 }
+
+/** 
+ * Implementation of hook_menu(). 
+ * @!todo https://community.openatrium.com/documentation-en/node/590#using-the-__count__-menu-
+ */
+function support_tickets_menu() {
+  $items = array();
+
+  $items['admin/settings/support-tickets'] = array(
+    'title' => 'Support Tickets',
+    'description' => 'TO BE COMPLETED',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('support_tickets_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  return $items;
+}
+
+function support_tickets_menu_alter(&$items) {
+  // Remove support_ticket node add page.
+  if (isset($items['node/add/support_ticket'])) {
+    unset($items['node/add/support_ticket']);
+  }
+}
+
+// Make the Add Ticket button project context aware
+function support_tickets_context_links_alter(&$links) {
+
+  if (context_get('context', 'support_ticket') && isset($links['support_ticket']) && $space = spaces_get_space() && is_numeric(arg(1)) ) {
+    $item = menu_get_item('node/add/support-ticket');
+    
+    if (arg(0) == 'support') {
+      // Make the add button default to the currently viewed project tickets
+      $project_id = arg(1);
+    } elseif (arg(0) == 'node') {
+      // Make the add  button default to the same project as the currently viewed ticket
+      $ticket = node_load(arg(1));
+      $project_id = $ticket->field_project[0]['nid'];
+    }
+    
+    if ($item['access'] && !empty($project_id)) {
+      $links['support_ticket']['query'] = "edit[field_project][nid][nid]={$project_id}";
+    }
+  }
+}
+
+
+function support_tickets_views_default_views_alter(&$views) {
+
+  if (isset($views['support_ticket_list'])) {
+    if(!$bundle = variable_get('support_ticket_bundle_type', '')) {
+      // Hide the column in Views
+      unset($views['support_ticket_list']->display['default']->display_options['fields']['field_project_nid']);    
+    }
+  }
+  
+  if (isset($views['support_ticket_bundle_ref'])) {
+    // List nodes of the type specified in the settings page
+    $views['support_ticket_bundle_ref']->display['default']->display_options['filters']['type']['value'][$bundle] = $bundle;
+  }
+}
+
+/**
+ * Form API callback for admin/settings/blog.
+ */
+function support_tickets_admin_settings() {
+  $form['bundle_type'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Grouping'),
+    '#description' => t('You can group support tickets in to bundles by associating them with an existing content type in Open Atrium.'),
+  );
+
+  $form['bundle_type']['support_ticket_bundle_type'] = array(
+    '#title' => t('Project content type'),
+    '#description' => t('Select the type of content you wish your tickets to be linked with'),
+    '#type' => 'select',
+    '#options' => node_get_types('names'),
+    '#default_value' => variable_get('support_ticket_bundle_type', ''),
+  );
+
+  return system_settings_form($form);
+}
+
